@@ -1,0 +1,4 @@
+SparqlLessons/
+.idea/
+venv/
+find_service.py
