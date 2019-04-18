@@ -1,7 +1,4 @@
-import owlready2
 from owlready2 import *
-from pymongo import MongoClient
-# pprint library is used to make the output look more pretty
 from pprint import pprint
 
 
@@ -9,22 +6,12 @@ class SparqlQuery:
 
     def __init__(self):
         onto_path.append("/home/gilberto/PycharmProjects/cloud_ontology/Ontology/")
-        # onto = get_ontology("CloudOntology.owl")
-        # onto2 = get_ontology("IaaS.owl")
-        # onto.imported_ontologies.append(onto2)
 
-        # my_world = World()
-        my_world2 = World()
+        default_world.get_ontology("CloudOntology.owl").load()
 
-        # my_world.get_ontology("IaaS.owl").load()
-        my_world2.get_ontology("IaaS.owl").load()
+        sync_reasoner()  # reasoner is started and synchronized here
 
-        # print("This is my onto: ", onto)
-        # print("This is my ontology imports: ", onto.imported_ontologies)
-
-        sync_reasoner(my_world2)  # reasoner is started and synchronized here
-
-        self.graph = my_world2.as_rdflib_graph()
+        self.graph = default_world.as_rdflib_graph()
 
     def search(self):
         # Search query is given here
@@ -41,7 +28,6 @@ class SparqlQuery:
         # creating json object
         response = []
         for item in resultsList:
-            # print("\t\tItem >\t\t\t\t\t\t\t\t", item)
 
             s = str(item['s'].toPython())
             s = re.sub(r'.*#', "", s)
