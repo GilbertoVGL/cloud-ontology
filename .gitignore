@@ -2,4 +2,4 @@ SparqlLessons/
 .idea/
 venv/
 find_service.py
-top
+mongo_connection.py
