@@ -4,7 +4,7 @@ cffi==1.12.2
 cryptography==2.6.1
 isodate==0.6.0
 Owlready2==0.14
-paramiko==2.4.2
+paramiko==2.10.1
 pyasn1==0.4.5
 pycparser==2.19
 pymongo==3.7.2
